@@ -7,6 +7,8 @@
 #include "HS_CharacterClass.h"
 #include "HS_CharacterStats.h"
 #include "HS_Rarity.h"
+#include "HS_Race.h"
+#include "HS_Item.h"
 #include "HS_Pawn.generated.h"
 
 UCLASS()
@@ -18,15 +20,20 @@ public:
 	AHS_Pawn();
 
 protected:
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	FHS_CharacterStats CharacterStats;
-
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	EHS_CharacterClass CharacterClass;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	EHS_Rarity Rarity;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	EHS_Race Race;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FHS_CharacterStats CharacterStats;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TArray<TObjectPtr<AHS_Item>> Items;
 
 public:
 	UFUNCTION(BlueprintCallable)
