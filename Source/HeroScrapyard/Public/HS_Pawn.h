@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "HS_CharacterClass.h"
 #include "HS_Pawn.generated.h"
 
 UCLASS()
@@ -32,6 +33,9 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float Stat4;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	HS_CharacterClass CharacterClass;
 
 public:
 	UFUNCTION(BlueprintCallable)
