@@ -15,7 +15,11 @@ class HEROSCRAPYARD_API AHS_GameState : public AGameStateBase
 	GENERATED_BODY()
 
 
-public:
+protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	int32 CurrentTurn = 0;		
+	int32 CurrentTurn = 0;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	int32 CurrentPlayerIndex = 0;
+
 };
