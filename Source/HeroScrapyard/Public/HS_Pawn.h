@@ -33,12 +33,13 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float Stat4;
 
+public:
+	float GetInitiative() const;
+
 protected:
 	virtual void BeginPlay() override;
 
 public:	
 	virtual void Tick(float DeltaTime) override;
-
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 };

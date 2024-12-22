@@ -6,29 +6,24 @@
 // Sets default values
 AHS_Pawn::AHS_Pawn()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+ 	PrimaryActorTick.bCanEverTick = true;
+}
 
+float AHS_Pawn::GetInitiative() const
+{
+	//TODO: Implement this function
+	return 0.f;
 }
 
 // Called when the game starts or when spawned
 void AHS_Pawn::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
 void AHS_Pawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-}
-
-// Called to bind functionality to input
-void AHS_Pawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 }
 
