@@ -5,9 +5,13 @@
 #include "CoreMinimal.h"
 
 UENUM(BlueprintType)
-enum class E_SC_CharacterMovementType : uint8
+enum class EHS_CharacterClass : uint8
 {
-	Class1,
-	Class2,
-	Class3
+	Fighter = 0 UMETA(DisplayName = "Fighter"),
+	Barbarian = 1 UMETA(DisplayName = "Barbarian"),
+	Cleric = 2 UMETA(DisplayName = "Cleric"),
+	Rogue = 3 UMETA(DisplayName = "Rogue"),
+	Wizard = 4 UMETA(DisplayName = "Wizard"),
+	Ranger = 5 UMETA(DisplayName = "Ranger"),
+	Druid = 6 UMETA(DisplayName = "Druid")
 };
