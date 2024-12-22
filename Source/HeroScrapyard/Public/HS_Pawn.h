@@ -34,7 +34,11 @@ protected:
 	float Stat4;
 
 public:
+	UFUNCTION(BlueprintCallable)
 	float GetInitiative() const;
+
+	UFUNCTION(BlueprintCallable)
+	bool IsDead() const { return CurrentHP <= 0.f; }
 
 protected:
 	virtual void BeginPlay() override;
