@@ -13,5 +13,9 @@ UCLASS()
 class HEROSCRAPYARD_API AHS_GameState : public AGameStateBase
 {
 	GENERATED_BODY()
-	
+
+
+public:
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	int32 CurrentTurn = 0;		
 };
