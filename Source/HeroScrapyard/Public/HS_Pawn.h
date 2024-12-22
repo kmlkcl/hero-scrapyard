@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "HS_CharacterClass.h"
+#include "HS_CharacterStats.h"
+#include "HS_Rarity.h"
 #include "HS_Pawn.generated.h"
 
 UCLASS()
@@ -16,33 +18,22 @@ public:
 	AHS_Pawn();
 
 protected:
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	float MaxHP;
 	
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	float CurrentHP;
-	
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	float Stat1;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FHS_CharacterStats CharacterStats;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	float Stat2;
+	EHS_CharacterClass CharacterClass;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	float Stat3;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	float Stat4;
-
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	HS_CharacterClass CharacterClass;
+	EHS_Rarity Rarity;
 
 public:
 	UFUNCTION(BlueprintCallable)
 	float GetInitiative() const;
 
 	UFUNCTION(BlueprintCallable)
-	bool IsDead() const { return CurrentHP <= 0.f; }
+	bool IsDead() const { return CharacterStats.CurrentHP <= 0.f; }
 
 protected:
 	virtual void BeginPlay() override;
