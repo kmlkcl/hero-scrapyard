@@ -12,18 +12,33 @@ class HEROSCRAPYARD_API AHS_Pawn : public APawn
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
 	AHS_Pawn();
 
 protected:
-	// Called when the game starts or when spawned
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float MaxHP;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float CurrentHP;
+	
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float Stat1;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float Stat2;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float Stat3;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float Stat4;
+
+protected:
 	virtual void BeginPlay() override;
 
 public:	
-	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 };
