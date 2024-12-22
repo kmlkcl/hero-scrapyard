@@ -2,4 +2,22 @@
 
 
 #include "HS_PlayerState.h"
+#include "HS_Pawn.h"
 
+int32 AHS_PlayerState::GetDivineFavorAmount() const
+{
+    return DivineFavorAmount;
+}
+
+int32 AHS_PlayerState::GetPawnCount(bool bIncludeDead) const
+{
+    int32 Count = 0;
+    for (const auto& Pawn : Pawns)
+    {
+        if (bIncludeDead || !Pawn->IsDead())
+        {
+            Count++;
+        }
+    }
+    return Count;
+}
