@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "HS_Rarity.h"
 #include "HS_CharacterClass.h"
+#include "HS_ItemType.h"
 #include "HS_ItemConfig.generated.h"
 
 /**
@@ -18,6 +19,9 @@ struct HEROSCRAPYARD_API FHS_ItemConfig
 public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	FText Name;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	EHS_ItemType ItemType;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	EHS_Rarity Rarity;

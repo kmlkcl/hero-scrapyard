@@ -15,6 +15,11 @@ float AHS_Pawn::GetInitiative() const
 	return 0.f;
 }
 
+float AHS_Pawn::CalculateRawAttackDamage() const
+{
+	return 0.f;
+}
+
 // Called when the game starts or when spawned
 void AHS_Pawn::BeginPlay()
 {

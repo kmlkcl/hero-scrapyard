@@ -8,7 +8,7 @@
 #include "HS_CharacterStats.h"
 #include "HS_Rarity.h"
 #include "HS_Race.h"
-#include "HS_Item.h"
+#include "HS_ItemConfig.h"
 #include "HS_Pawn.generated.h"
 
 UCLASS()
@@ -33,7 +33,7 @@ protected:
 	FHS_CharacterStats CharacterStats;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	TArray<TObjectPtr<AHS_Item>> Items;
+	TArray<FHS_ItemConfig> Items;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	int32 Level;
@@ -44,6 +44,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	bool IsDead() const { return CharacterStats.CurrentHP <= 0.f; }
+
+	UFUNCTION(BlueprintCallable)
+	float CalculateRawAttackDamage() const;
 
 protected:
 	virtual void BeginPlay() override;
