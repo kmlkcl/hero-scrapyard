@@ -43,6 +43,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float ValueMax;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TMap<float, EHS_EffectSubject> ModifierCalculations;	// 3.2 * Might, 0.5 * Dexterity, etc.
+
 	// 0 means permanent
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	int32 Duration; 
