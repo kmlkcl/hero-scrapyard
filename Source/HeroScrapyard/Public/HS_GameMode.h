@@ -30,4 +30,5 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TArray<FHS_RaceConfig> Races;
+
 };

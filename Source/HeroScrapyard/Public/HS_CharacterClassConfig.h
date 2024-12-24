@@ -6,6 +6,7 @@
 #include "HS_CharacterClass.h"
 #include "HS_CharacterStats.h"
 #include "HS_Rarity.h"
+#include "HS_Action.h"
 #include "HS_CharacterClassConfig.generated.h"
 
 /**
@@ -25,4 +26,22 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FHS_CharacterStats CharacterStats;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float MightGrowth;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float DexterityGrowth;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float DefenseGrowth;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float HPGrowthMin;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float HPGrowthMax;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TArray<FHS_Action> Actions;
 };

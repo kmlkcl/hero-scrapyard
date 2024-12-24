@@ -35,6 +35,9 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TArray<TObjectPtr<AHS_Item>> Items;
 
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	int32 Level;
+
 public:
 	UFUNCTION(BlueprintCallable)
 	float GetInitiative() const;
