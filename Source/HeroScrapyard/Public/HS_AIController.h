@@ -8,16 +8,20 @@
 
 class AHS_PlayerState;
 /**
- * 
+ *
  */
 UCLASS()
 class HEROSCRAPYARD_API AHS_AIController : public AAIController
 {
 	GENERATED_BODY()
-	
+
 protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TObjectPtr<AHS_PlayerState> HSPlayerState;
 
 	virtual void BeginPlay() override;
+
+public:
+	UFUNCTION(BlueprintCallable)
+	AHS_PlayerState *GetHSPlayerState() const { return HSPlayerState; }
 };

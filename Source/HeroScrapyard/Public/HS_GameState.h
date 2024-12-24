@@ -19,7 +19,4 @@ protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	int32 CurrentTurn = 0;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	int32 CurrentPlayerIndex = 0;
-
 };

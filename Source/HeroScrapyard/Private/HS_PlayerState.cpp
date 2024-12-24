@@ -21,3 +21,11 @@ int32 AHS_PlayerState::GetPawnCount(bool bIncludeDead) const
     }
     return Count;
 }
+
+void AHS_PlayerState::AddTimeDelayToPawns(int32 TimeDelay)
+{
+    for (const auto& Pawn : Pawns)
+    {
+        Pawn->AddTimeDelay(TimeDelay);
+    }
+}

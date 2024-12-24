@@ -29,4 +29,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	int32 GetPawnCount(bool bIncludeDead = false) const;
+
+	UFUNCTION(BlueprintCallable)
+	void AddPawn(AHS_Pawn *Pawn) { Pawns.Add(Pawn); }
+
+	UFUNCTION(BlueprintCallable)
+	void AddTimeDelayToPawns(int32 TimeDelay);
 };

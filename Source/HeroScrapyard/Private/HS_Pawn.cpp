@@ -15,7 +15,8 @@ AHS_Pawn::AHS_Pawn()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-void AHS_Pawn::InitializePawn(int32 Lvl, const FHS_CharacterClassConfig &CharacterClassConfig, const FHS_RaceConfig &RaceConfig)
+//Returns init value
+int32 AHS_Pawn::InitializePawn(int32 Lvl, const FHS_CharacterClassConfig &CharacterClassConfig, const FHS_RaceConfig &RaceConfig)
 {
 	CharacterClass = CharacterClassConfig.CharacterClass;
 	Rarity = CharacterClassConfig.Rarity;
@@ -42,7 +43,9 @@ void AHS_Pawn::InitializePawn(int32 Lvl, const FHS_CharacterClassConfig &Charact
 
 	Actions = CharacterClassConfig.Actions;
 
-	CurrentInitDelay = GetInitiative(); 
+	CurrentInitDelay = GetInitiative();
+
+	return CurrentInitDelay; 
 }
 
 float AHS_Pawn::GetInitiative() const

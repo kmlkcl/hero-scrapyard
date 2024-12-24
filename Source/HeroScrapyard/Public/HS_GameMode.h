@@ -39,4 +39,6 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void StartGame() const;
 
+	UFUNCTION(BlueprintCallable)
+	TArray<FHS_ItemConfig> ProduceRandomItems(int32 Count) const;
 };
