@@ -6,6 +6,7 @@
 #include "AIController.h"
 #include "HS_AIController.generated.h"
 
+class AHS_PlayerState;
 /**
  * 
  */
@@ -14,4 +15,9 @@ class HEROSCRAPYARD_API AHS_AIController : public AAIController
 {
 	GENERATED_BODY()
 	
+protected:
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TObjectPtr<AHS_PlayerState> HSPlayerState;
+
+	virtual void BeginPlay() override;
 };

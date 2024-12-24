@@ -41,6 +41,8 @@ void AHS_Pawn::InitializePawn(int32 Lvl, const FHS_CharacterClassConfig &Charact
 	}	
 
 	Actions = CharacterClassConfig.Actions;
+
+	CurrentInitDelay = GetInitiative(); 
 }
 
 float AHS_Pawn::GetInitiative() const
