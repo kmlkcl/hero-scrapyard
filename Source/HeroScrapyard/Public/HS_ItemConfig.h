@@ -3,10 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "HS_Rarity.h"
-#include "HS_CharacterClass.h"
-#include "HS_ItemType.h"
 #include "HS_ItemConfig.generated.h"
+
+enum class EHS_ItemType : uint8;
+enum class EHS_Rarity : uint8;
+enum class EHS_CharacterClass : uint8;
 
 /**
  * 

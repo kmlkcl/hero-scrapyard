@@ -3,11 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "HS_CharacterClass.h"
 #include "HS_CharacterStats.h"
-#include "HS_Rarity.h"
 #include "HS_Action.h"
 #include "HS_CharacterClassConfig.generated.h"
+
+enum class EHS_CharacterClass : uint8;
+enum class EHS_Rarity : uint8;
 
 /**
  *

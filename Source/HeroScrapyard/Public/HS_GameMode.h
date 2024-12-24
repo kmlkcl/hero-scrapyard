@@ -4,16 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "HS_ItemConfig.h"
-#include "HS_Race.h"
-#include "HS_ConsumeableConfig.h"
-#include "HS_CharacterClassConfig.h"
 #include "HS_GameMode.generated.h"
+
+struct FHS_CharacterClassConfig;
+struct FHS_ItemConfig;
+struct FHS_ConsumeableConfig;
+struct FHS_RaceConfig;
 
 /**
  *
  */
-UCLASS()
+UCLASS(Blueprintable)
 class HEROSCRAPYARD_API AHS_GameMode : public AGameModeBase
 {
 	GENERATED_BODY()
@@ -30,5 +31,12 @@ protected:
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	TArray<FHS_RaceConfig> Races;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	int32 StartingHeroCount;
+
+public:
+	UFUNCTION(BlueprintCallable)
+	void StartGame() const;
 
 };

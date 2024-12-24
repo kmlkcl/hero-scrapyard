@@ -3,9 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "HS_Rarity.h"
 #include "HS_Effect.h"
 #include "HS_ConsumeableConfig.generated.h"
+
+enum class EHS_Rarity : uint8;
 
 /**
  * 
