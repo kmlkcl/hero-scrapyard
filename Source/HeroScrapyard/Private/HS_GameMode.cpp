@@ -2,11 +2,18 @@
 
 #include "HS_GameMode.h"
 #include "HS_Pawn.h"
+#include "HS_Race.h"
 #include "HS_CharacterClassConfig.h"
 
 void AHS_GameMode::StartGame() const
 {
     // Create starting hero count amount of HS_Pawn for player and AI randomly
+
+    if(CharacterConfigs.Num() == 0 || Races.Num() == 0)
+    {
+        UE_LOG(LogTemp, Error, TEXT("GameMode has no CharacterConfigs or Races"));
+        return;
+    }
 
     for (int32 i = 0; i < StartingHeroCount * 2; i++)
     {
@@ -16,5 +23,8 @@ void AHS_GameMode::StartGame() const
         AHS_Pawn* NewPawn = GetWorld()->SpawnActor<AHS_Pawn>(AHS_Pawn::StaticClass());
 
         const FHS_CharacterClassConfig& CharacterConfig = CharacterConfigs[RandomCharacterClassConfigIndex];
+        const FHS_RaceConfig& RaceConfig = Races[RandomRaceConfigIndex];
+
+        NewPawn->InitializePawn(1, CharacterConfig, RaceConfig); 
     }
 }

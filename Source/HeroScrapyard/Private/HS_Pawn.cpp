@@ -7,11 +7,40 @@
 #include "HS_ItemConfig.h"
 #include "HS_Action.h"
 #include "HS_Effect.h"
+#include "HS_Race.h"
 
 // Sets default values
 AHS_Pawn::AHS_Pawn()
 {
 	PrimaryActorTick.bCanEverTick = true;
+}
+
+void AHS_Pawn::InitializePawn(int32 Lvl, const FHS_CharacterClassConfig &CharacterClassConfig, const FHS_RaceConfig &RaceConfig)
+{
+	CharacterClass = CharacterClassConfig.CharacterClass;
+	Rarity = CharacterClassConfig.Rarity;
+	Race = RaceConfig.Race;
+
+	CharacterStats.MaxHP = CharacterClassConfig.CharacterStats.MaxHP;
+	CharacterStats.CurrentHP = CharacterStats.MaxHP;
+	CharacterStats.Might = CharacterClassConfig.CharacterStats.Might;
+	CharacterStats.Dexterity = CharacterClassConfig.CharacterStats.Dexterity;
+	CharacterStats.Defense = CharacterClassConfig.CharacterStats.Defense;
+
+	CharacterStats.Might += FMath::RandRange(RaceConfig.MightModifierMin, RaceConfig.MightModifierMax);
+	CharacterStats.Dexterity += FMath::RandRange(RaceConfig.DexterityModifierMin, RaceConfig.DexterityModifierMax);
+	CharacterStats.Defense += FMath::RandRange(RaceConfig.DefenseModifierMin, RaceConfig.DefenseModifierMax);
+
+	for (int32 i = 1; i <= Lvl; i++)
+	{
+		Level = i;
+		CharacterStats.MaxHP += FMath::RandRange(CharacterClassConfig.HPGrowthMin, CharacterClassConfig.HPGrowthMax);
+		CharacterStats.Might += CharacterClassConfig.MightGrowth;
+		CharacterStats.Dexterity += CharacterClassConfig.DexterityGrowth;
+		CharacterStats.Defense += CharacterClassConfig.DefenseGrowth;
+	}	
+
+	Actions = CharacterClassConfig.Actions;
 }
 
 float AHS_Pawn::GetInitiative() const
@@ -34,17 +63,17 @@ int32 AHS_Pawn::GetWeaponIndex() const
 	return -1;
 }
 
-void AHS_Pawn::CastAction(int ActionIndex, TArray<AHS_Pawn*> Targets)
+void AHS_Pawn::CastAction(int ActionIndex, TArray<AHS_Pawn *> Targets)
 {
-	const FHS_Action& Action = Actions[ActionIndex];
+	const FHS_Action &Action = Actions[ActionIndex];
 
-	for(const FHS_EffectTargets& EffectTarget : Action.EffectTargets)
+	for (const FHS_EffectTargets &EffectTarget : Action.EffectTargets)
 	{
-		const FHS_Effect& Effect = Action.Effects[EffectTarget.EffectIndex];
+		const FHS_Effect &Effect = Action.Effects[EffectTarget.EffectIndex];
 
-		for(int32 TargetIndex : EffectTarget.TargetIndices)
+		for (int32 TargetIndex : EffectTarget.TargetIndices)
 		{
-			AHS_Pawn* Target = Targets[TargetIndex];
+			AHS_Pawn *Target = Targets[TargetIndex];
 
 			Target->ApplyEffect(Effect);
 		}
@@ -53,15 +82,15 @@ void AHS_Pawn::CastAction(int ActionIndex, TArray<AHS_Pawn*> Targets)
 	CurrentInitDelay += Action.TimeCost;
 }
 
-void AHS_Pawn::ApplyEffect(const FHS_Effect& Effect)
+void AHS_Pawn::ApplyEffect(const FHS_Effect &Effect)
 {
 	FHS_Effect NewEffect = Effect;
 	ActiveEffects.Add(NewEffect);
 }
 
-float AHS_Pawn::CalculateRawAttackDamage(const AHS_Pawn* Target) const
+float AHS_Pawn::CalculateRawAttackDamage(const AHS_Pawn *Target) const
 {
-	const FHS_ItemConfig& Weapon = Items[GetWeaponIndex()];
+	const FHS_ItemConfig &Weapon = Items[GetWeaponIndex()];
 
 	float RandomDamage = FMath::RandRange(Weapon.DamageMin, Weapon.DamageMax);
 
@@ -70,14 +99,14 @@ float AHS_Pawn::CalculateRawAttackDamage(const AHS_Pawn* Target) const
 
 float AHS_Pawn::RawToCritDamage(float RawDamage) const
 {
-	const FHS_ItemConfig& Weapon = Items[GetWeaponIndex()];
+	const FHS_ItemConfig &Weapon = Items[GetWeaponIndex()];
 
 	return RawDamage * (Weapon.CritFactor + CharacterStats.Dexterity / 100.f);
 }
 
 bool AHS_Pawn::IsCriticalHit() const
 {
-	const FHS_ItemConfig& Weapon = Items[GetWeaponIndex()];
+	const FHS_ItemConfig &Weapon = Items[GetWeaponIndex()];
 
 	float d100 = FMath::RandRange(1, 100);
 

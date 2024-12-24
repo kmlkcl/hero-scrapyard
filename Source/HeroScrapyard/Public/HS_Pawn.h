@@ -80,4 +80,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	bool IsDead() const { return CharacterStats.CurrentHP <= 0.f; }
+
+	UFUNCTION(BlueprintCallable)
+	void InitializePawn(int32 Lvl, const FHS_CharacterClassConfig &CharacterClassConfig, const FHS_RaceConfig &RaceConfig);
 };
